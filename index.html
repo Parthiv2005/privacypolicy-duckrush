@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Duck Rush</title>
+  <meta name="description" content="Official Privacy Policy for the Duck Rush mobile game, covering Google Play Games sign-in, voluntary rewarded ads for revives and mission skips, and player data rights." />
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            duck: {
+              bg: '#FFFDF7',
+              card: '#FFFFFF',
+              border: '#E2E8F0',
+              ink: '#1E293B',
+              muted: '#475569',
+              amber: '#F59E0B',
+              amberLight: '#FEF3C7',
+              amberSoft: '#FFFBEB',
+              pond: '#0EA5E9',
+              pondLight: '#E0F2FE',
+              pondSoft: '#F0F9FF',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #FFFDF7;
+      color: #1E293B;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    /* Offset anchor targets so sticky header does not overlap section titles */
+    section[id] {
+      scroll-margin-top: 6.5rem;
+    }
+
+    /* Custom subtle scrollbar for horizontal mobile TOC */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @media print {
+      #dev-toolbar,
+      #dev-restore-pill,
+      #mobile-toc-bar,
+      #toast-container {
+        display: none !important;
+      }
+      body {
+        background-color: #FFFFFF !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-amber-200 selection:text-slate-900">
+
+  <!-- ===================================================================== -->
+  <!-- DEVELOPER SETUP & EXPORT UTILITY BAR (Excluded from clean HTML export) -->
+  <!-- ===================================================================== -->
+  <div id="dev-toolbar" class="bg-slate-900 text-slate-100 border-b border-slate-800 shadow-md z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Compact Control Header -->
+      <div class="py-2.5 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2.5">
+          <span class="inline-flex items-center justify-center w-6 h-6 rounded-md bg-amber-500/20 text-amber-400 border border-amber-500/30">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </span>
+          <span class="font-display font-bold text-xs sm:text-sm tracking-tight text-white">Developer Setup &amp; Export</span>
+          <span class="hidden md:inline-block text-xs text-slate-400">— Live-edit fields below &amp; export a clean standalone file for Google Play Console</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button
+            id="btn-toggle-dev-panel"
+            type="button"
+            class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition"
+            aria-expanded="true"
+          >
+            <span id="toggle-panel-label">Collapse</span>
+            <svg id="toggle-panel-chevron" class="w-3.5 h-3.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+            </svg>
+          </button>
+
+          <button
+            id="btn-hide-dev-bar"
+            type="button"
+            title="Hide developer toolbar for a pure public preview"
+            class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+            <span class="hidden sm:inline">Public View</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Expandable Editor Drawer -->
+      <div id="dev-panel-body" class="pb-4 pt-2 border-t border-slate-800/80">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          <div>
+            <label for="input-studio" class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1">Developer / Studio Name</label>
+            <input
+              id="input-studio"
+              type="text"
+              value="Duck Rush Studio"
+              placeholder="Duck Rush Studio"
+              class="w-full px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400"
+            />
+          </div>
+
+          <div>
+            <label for="input-email" class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1">Support / Privacy Email</label>
+            <input
+              id="input-email"
+              type="email"
+              value="privacy@duckrushgame.com"
+              placeholder="privacy@duckrushgame.com"
+              class="w-full px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400"
+            />
+          </div>
+
+          <div>
+            <label for="input-ad-provider" class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1">Ad Provider Name</label>
+            <input
+              id="input-ad-provider"
+              type="text"
+              value="Google AdMob"
+              placeholder="Google AdMob"
+              class="w-full px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400"
+            />
+          </div>
+
+          <div>
+            <label for="input-effective-date" class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1">Effective Date</label>
+            <input
+              id="input-effective-date"
+              type="text"
+              value="November 12, 2026"
+              placeholder="November 12, 2026"
+              class="w-full px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400"
+            />
+          </div>
+
+          <div>
+            <label for="input-jurisdiction" class="block text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1">Country / Jurisdiction</label>
+            <input
+              id="input-jurisdiction"
+              type="text"
+              value="United States"
+              placeholder="United States"
+              class="w-full px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400"
+            />
+          </div>
+        </div>
+
+        <!-- Export Action Buttons -->
+        <div class="mt-3.5 pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+          <p class="text-xs text-slate-400">
+            Exported <code class="text-amber-300 bg-slate-800 px-1.5 py-0.5 rounded">index.html</code> strips this toolbar automatically for direct hosting on GitHub Pages, Netlify, or Firebase.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button
+              id="btn-copy-policy"
+              type="button"
+              class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-800 hover:bg-slate-700 text-slate-100 border border-slate-700 transition cursor-pointer"
+            >
+              <svg class="w-4 h-4 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+              </svg>
+              <span>Copy Policy Text</span>
+            </button>
+
+            <button
+              id="btn-download-html"
+              type="button"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-sm transition cursor-pointer"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              <span>Download clean index.html</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Discreet Floating Pill to Restore Dev Bar when Hidden -->
+  <button
+    id="dev-restore-pill"
+    type="button"
+    class="hidden fixed bottom-4 right-4 z-40 items-center gap-2 px-3.5 py-2 rounded-full bg-slate-900/95 hover:bg-slate-800 text-white text-xs font-semibold shadow-lg border border-slate-700 backdrop-blur transition cursor-pointer"
+  >
+    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+    <span>Developer Setup</span>
+  </button>
+
+  <!-- ===================================================================== -->
+  <!-- PUBLIC PRIVACY POLICY CONTENT (Captured cleanly on export)            -->
+  <!-- ===================================================================== -->
+  <div id="public-policy-root" class="flex-1 flex flex-col">
+
+    <!-- Top Brand Navigation Header -->
+    <header class="sticky top-0 z-30 bg-[#FFFDF7]/90 backdrop-blur-md border-b border-[#E2E8F0]">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-4">
+        <!-- Custom SVG Duck Rush Emblem + Brand Title -->
+        <a href="#overview" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 p-0.5 shadow-sm ring-1 ring-amber-500/30 group-hover:scale-105 transition-transform">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full rounded-[14px]" aria-label="Duck Rush Emblem">
+              <!-- Warm Sky / Golden Backdrop -->
+              <rect width="64" height="64" rx="14" fill="#FFFBEB" />
+              <!-- Playful Rush Speed Lines -->
+              <path d="M8 22H18" stroke="#F59E0B" stroke-width="3" stroke-linecap="round" />
+              <path d="M6 30H15" stroke="#38BDF8" stroke-width="3" stroke-linecap="round" />
+              <path d="M10 38H18" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round" />
+              <!-- Pond-Blue Water Ripple Base -->
+              <path d="M6 48C13 44 19 52 26 48C33 44 39 52 46 48C51 45 55 47 58 48V58H6V48Z" fill="#0EA5E9" />
+              <path d="M12 53C18 50.5 23 55.5 29 53C35 50.5 40 55.5 46 53C50 51.5 53 52.5 56 53" stroke="#BAE6FD" stroke-width="2" stroke-linecap="round" />
+              <!-- Cheerful Duck Body & Head -->
+              <path d="M21 43C18.5 39 19.5 33 24 31.5C25 31.2 26.5 31 27.5 31C26 28.5 25.5 25 27 21.5C28.8 17.3 33.5 15 38.2 15.8C42.8 16.6 46 20.5 45.8 25.2C45.7 27.2 44.9 29 43.7 30.3C46.5 32.2 48 35.8 46.8 39.6C45.5 43.6 41.2 46 36.2 46H26.5C24.2 46 22.2 44.9 21 43Z" fill="#FBBF24" stroke="#D97706" stroke-width="2" stroke-linejoin="round" />
+              <!-- Wing Curve -->
+              <path d="M27.5 36.5C30.5 35.5 35.5 36.5 37.5 39.5C34.5 41.5 29.5 41.2 27.5 36.5Z" fill="#F59E0B" />
+              <!-- Orange Duck Beak -->
+              <path d="M45 23.5C48.5 23.2 53.5 24.2 54.2 26.5C54.8 28.5 50.2 29.8 44.8 29.2L45 23.5Z" fill="#F97316" stroke="#C2410C" stroke-width="1.8" stroke-linejoin="round" />
+              <!-- Eye & Catchlight -->
+              <circle cx="38.5" cy="22.5" r="2.6" fill="#1E293B" />
+              <circle cx="39.3" cy="21.6" r="0.9" fill="#FFFFFF" />
+            </svg>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-display font-extrabold text-lg sm:text-xl tracking-tight text-slate-900">Duck Rush</span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-100 text-sky-800 border border-sky-200">
+              Privacy Policy
+            </span>
+          </div>
+        </a>
+
+        <!-- Header Right Metadata & Quick Jump -->
+        <div class="flex items-center gap-3">
+          <div class="hidden sm:flex items-center gap-1.5 text-xs font-medium text-slate-600 bg-white px-3 py-1.5 rounded-full border border-[#E2E8F0]">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <span>Effective: <strong class="font-semibold text-slate-800" data-bind="effectiveDate">November 12, 2026</strong></span>
+          </div>
+          <a
+            href="#contact"
+            class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white hover:bg-sky-50 text-slate-800 hover:text-sky-700 border border-[#E2E8F0] transition"
+          >
+            <span>Contact Us</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Horizontal Quick-Jump Table of Contents -->
+      <div id="mobile-toc-bar" class="lg:hidden border-t border-[#E2E8F0] bg-white/95 px-4 py-2 overflow-x-auto no-scrollbar">
+        <nav aria-label="Mobile sections navigation" class="flex items-center gap-1.5 min-w-max">
+          <a href="#overview" data-toc-link="overview" class="toc-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition">1. Overview</a>
+          <a href="#play-games" data-toc-link="play-games" class="toc-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition">2. Play Games</a>
+          <a href="#rewarded-ads" data-toc-link="rewarded-ads" class="toc-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition">3. Rewarded Ads</a>
+          <a href="#gameplay-diagnostics" data-toc-link="gameplay-diagnostics" class="toc-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition">4. Gameplay Data</a>
+          <a href="#data-safety" data-toc-link="data-safety" class="toc-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition">5. Data Safety</a>
+          <a href="#retention-deletion" data-toc-link="retention-deletion" class="toc-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition">6. Deletion &amp; Security</a>
+          <a href="#childrens-privacy" data-toc-link="childrens-privacy" class="toc-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition">7. Children</a>
+          <a href="#contact" data-toc-link="contact" class="toc-link px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 hover:text-slate-900 transition">8. Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Two-Column Container -->
+    <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div class="flex flex-col lg:flex-row items-start gap-8 xl:gap-10">
+
+        <!-- =============================================================== -->
+        <!-- LEFT SIDEBAR: STICKY TABLE OF CONTENTS (Desktop)                -->
+        <!-- =============================================================== -->
+        <aside class="hidden lg:block w-72 xl:w-80 shrink-0 sticky top-24">
+          <div class="bg-white border border-[#E2E8F0] rounded-2xl p-5 shadow-[0_2px_12px_-3px_rgba(15,23,42,0.04)]">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+              <span class="font-display font-bold text-xs uppercase tracking-wider text-slate-500">Table of Contents</span>
+              <span class="text-[11px] font-medium text-sky-600 bg-sky-50 px-2 py-0.5 rounded-md">8 Sections</span>
+            </div>
+
+            <nav aria-label="Privacy Policy Table of Contents" class="space-y-1">
+              <a href="#overview" data-toc-link="overview" class="toc-link group flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-l-2 border-transparent transition">
+                <span class="toc-num w-6 h-6 rounded-lg bg-slate-100 text-slate-600 text-xs font-bold flex items-center justify-center shrink-0 transition">01</span>
+                <span class="truncate">Overview &amp; Effective Date</span>
+              </a>
+
+              <a href="#play-games" data-toc-link="play-games" class="toc-link group flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-l-2 border-transparent transition">
+                <span class="toc-num w-6 h-6 rounded-lg bg-slate-100 text-slate-600 text-xs font-bold flex items-center justify-center shrink-0 transition">02</span>
+                <span class="truncate">Google Play Games Login</span>
+              </a>
+
+              <a href="#rewarded-ads" data-toc-link="rewarded-ads" class="toc-link group flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-l-2 border-transparent transition">
+                <span class="toc-num w-6 h-6 rounded-lg bg-slate-100 text-slate-600 text-xs font-bold flex items-center justify-center shrink-0 transition">03</span>
+                <span class="truncate">Rewarded Advertisements</span>
+              </a>
+
+              <a href="#gameplay-diagnostics" data-toc-link="gameplay-diagnostics" class="toc-link group flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-l-2 border-transparent transition">
+                <span class="toc-num w-6 h-6 rounded-lg bg-slate-100 text-slate-600 text-xs font-bold flex items-center justify-center shrink-0 transition">04</span>
+                <span class="truncate">Gameplay &amp; Diagnostics</span>
+              </a>
+
+              <a href="#data-safety" data-toc-link="data-safety" class="toc-link group flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-l-2 border-transparent transition">
+                <span class="toc-num w-6 h-6 rounded-lg bg-slate-100 text-slate-600 text-xs font-bold flex items-center justify-center shrink-0 transition">05</span>
+                <span class="truncate">Play Data Safety Table</span>
+              </a>
+
+              <a href="#retention-deletion" data-toc-link="retention-deletion" class="toc-link group flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-l-2 border-transparent transition">
+                <span class="toc-num w-6 h-6 rounded-lg bg-slate-100 text-slate-600 text-xs font-bold flex items-center justify-center shrink-0 transition">06</span>
+                <span class="truncate">Retention &amp; Account Deletion</span>
+              </a>
+
+              <a href="#childrens-privacy" data-toc-link="childrens-privacy" class="toc-link group flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-l-2 border-transparent transition">
+                <span class="toc-num w-6 h-6 rounded-lg bg-slate-100 text-slate-600 text-xs font-bold flex items-center justify-center shrink-0 transition">07</span>
+                <span class="truncate">Children’s Privacy</span>
+              </a>
+
+              <a href="#contact" data-toc-link="contact" class="toc-link group flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-l-2 border-transparent transition">
+                <span class="toc-num w-6 h-6 rounded-lg bg-slate-100 text-slate-600 text-xs font-bold flex items-center justify-center shrink-0 transition">08</span>
+                <span class="truncate">Changes &amp; Contact</span>
+              </a>
+            </nav>
+
+            <!-- Quick Links Box -->
+            <div class="mt-5 pt-4 border-t border-slate-100 space-y-2">
+              <a
+                href="#retention-deletion"
+                class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold bg-amber-50 hover:bg-amber-100/80 text-amber-900 border border-amber-200/70 transition"
+              >
+                <span>Data Deletion Guide</span>
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+              <a
+                href="https://policies.google.com/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium text-slate-600 hover:text-sky-700 hover:bg-sky-50 transition"
+              >
+                <span>Google Privacy Policy</span>
+                <span aria-hidden="true">&#8599;</span>
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- =============================================================== -->
+        <!-- RIGHT COLUMN: READABLE PRIVACY POLICY DOCUMENT                  -->
+        <!-- =============================================================== -->
+        <article id="policy-document-body" class="flex-1 min-w-0 space-y-6 sm:space-y-8">
+
+          <!-- Hero Intro Card -->
+          <div class="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 lg:p-10 shadow-[0_2px_14px_-3px_rgba(15,23,42,0.05)] relative overflow-hidden">
+            <!-- Subtle decorative pond/amber corner glow -->
+            <div class="absolute -top-16 -right-16 w-48 h-48 rounded-full bg-amber-100/60 blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-20 -left-16 w-52 h-52 rounded-full bg-sky-100/60 blur-2xl pointer-events-none"></div>
+
+            <div class="relative">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200/80 mb-4">
+                <span>Official Game Privacy Notice</span>
+                <span class="text-amber-400">&bull;</span>
+                <span>Android &amp; Google Play</span>
+              </div>
+
+              <h1 class="font-display font-extrabold text-2xl sm:text-3xl lg:text-4xl text-slate-900 tracking-tight leading-tight">
+                Duck Rush Privacy Policy
+              </h1>
+
+              <p class="mt-3 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
+                Transparent, player-first details on how <strong class="font-semibold text-slate-800" data-bind="studioName">Duck Rush Studio</strong> handles your game progress, optional Google Play Games sign-in, and voluntary rewarded video ads.
+              </p>
+
+              <!-- Key Highlights Pills -->
+              <div class="mt-6 pt-5 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="flex items-center gap-2.5 p-3 rounded-xl bg-[#FFFDF7] border border-slate-200/80">
+                  <span class="w-8 h-8 rounded-lg bg-sky-100 text-sky-600 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </span>
+                  <div>
+                    <div class="text-xs font-bold text-slate-800">Optional Sign-In</div>
+                    <div class="text-[11px] text-slate-500">Play offline anytime</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2.5 p-3 rounded-xl bg-[#FFFDF7] border border-slate-200/80">
+                  <span class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                    </svg>
+                  </span>
+                  <div>
+                    <div class="text-xs font-bold text-slate-800">Opt-In Rewarded Ads</div>
+                    <div class="text-[11px] text-slate-500">Only for revives &amp; skips</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2.5 p-3 rounded-xl bg-[#FFFDF7] border border-slate-200/80">
+                  <span class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0">
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                  </span>
+                  <div>
+                    <div class="text-xs font-bold text-slate-800">Encrypted Transit</div>
+                    <div class="text-[11px] text-slate-500">TLS/HTTPS protected</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================================= -->
+          <!-- SECTION 1: OVERVIEW & EFFECTIVE DATE                          -->
+          <!-- ============================================================= -->
+          <section id="overview" class="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 shadow-[0_2px_12px_-3px_rgba(15,23,42,0.04)]">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-display font-bold text-sm flex items-center justify-center shrink-0">01</span>
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Overview &amp; Effective Date</h2>
+            </div>
+
+            <div class="space-y-4 text-[15px] sm:text-base text-slate-600 leading-relaxed">
+              <p>
+                <strong class="font-semibold text-slate-800">Effective Date:</strong> <span data-bind="effectiveDate" class="font-medium text-slate-800">November 12, 2026</span>
+              </p>
+              <p>
+                Welcome to <strong class="font-semibold text-slate-800">Duck Rush</strong>, a mobile arcade game developed and published by <strong class="font-semibold text-slate-800" data-bind="studioName">Duck Rush Studio</strong> (“we,” “our,” or “us”). We respect your privacy and are committed to being transparent about the limited data processed when you play Duck Rush on Android devices.
+              </p>
+              <p>
+                You can play the core Duck Rush experience offline without creating an account or sharing personal details. Data is only processed when you choose to connect <strong class="font-semibold text-slate-800">Google Play Games Services</strong> (for cloud saves, achievements, and leaderboards), choose to watch a <strong class="font-semibold text-slate-800">voluntary Rewarded Video Ad</strong> (to revive your duck or skip a mission), or when standard anonymous crash diagnostics are generated to keep the game running smoothly.
+              </p>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- SECTION 2: INFORMATION COLLECTED VIA GOOGLE PLAY GAMES LOGIN  -->
+          <!-- ============================================================= -->
+          <section id="play-games" class="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 shadow-[0_2px_12px_-3px_rgba(15,23,42,0.04)]">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-800 font-display font-bold text-sm flex items-center justify-center shrink-0">02</span>
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Information Collected via Google Play Games Login</h2>
+            </div>
+
+            <div class="space-y-4 text-[15px] sm:text-base text-slate-600 leading-relaxed">
+              <p>
+                Duck Rush integrates <strong class="font-semibold text-slate-800">Google Play Games Services</strong> to offer optional social and cloud-sync features. Signing in with Google Play Games is <strong class="font-semibold text-slate-800">completely optional</strong>—if you decline or sign out, you can still play Duck Rush locally on your device.
+              </p>
+
+              <div class="bg-[#FFFDF7] border border-slate-200/90 rounded-xl p-4 sm:p-5">
+                <h3 class="font-display font-bold text-sm sm:text-base text-slate-900 mb-2.5">Data Accessed When You Sign In</h3>
+                <ul class="space-y-2.5 text-sm sm:text-[15px] text-slate-600">
+                  <li class="flex items-start gap-2.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 shrink-0"></span>
+                    <span><strong class="font-semibold text-slate-800">Gamer Tag (Display Name) &amp; Avatar:</strong> Your public Play Games nickname and profile icon, shown in-game and on public or friends leaderboards.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 shrink-0"></span>
+                    <span><strong class="font-semibold text-slate-800">Play Games Player ID:</strong> A unique platform identifier generated by Google Play Games to associate your game save with your Play Games profile (we do not receive your Gmail password).</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 shrink-0"></span>
+                    <span><strong class="font-semibold text-slate-800">Cloud Save Progress:</strong> Stage completion, unlocked duck characters/items, mission milestones, and currency balances stored via Google Play Saved Games.</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-sky-500 mt-2 shrink-0"></span>
+                    <span><strong class="font-semibold text-slate-800">Achievements &amp; Leaderboard Scores:</strong> Unlocked trophies and high-score records submitted to Google Play Games leaderboards.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <p>
+                <strong class="font-semibold text-slate-800">Purpose of Processing:</strong> We use this information solely to sync your game progress across Android devices, display your ranking on leaderboards, and track unlocked achievements.
+              </p>
+
+              <p>
+                Google Play Games Services is governed by Google’s own privacy practices. You can review the official{" "}
+                <a
+                  href="https://policies.google.com/privacy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-semibold text-sky-600 hover:text-sky-700 underline decoration-sky-300 underline-offset-2"
+                >
+                  Google Privacy Policy (https://policies.google.com/privacy)
+                </a>
+                {" "}for further details.
+              </p>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- SECTION 3: REWARDED ADVERTISEMENTS (REVIVES & MISSION SKIPS)  -->
+          <!-- ============================================================= -->
+          <section id="rewarded-ads" class="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 shadow-[0_2px_12px_-3px_rgba(15,23,42,0.04)]">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-display font-bold text-sm flex items-center justify-center shrink-0">03</span>
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Rewarded Advertisements (Revives &amp; Mission Skips)</h2>
+            </div>
+
+            <div class="space-y-4 text-[15px] sm:text-base text-slate-600 leading-relaxed">
+              <p>
+                Duck Rush includes <strong class="font-semibold text-slate-800">voluntary, opt-in Rewarded Video Advertisements</strong> powered by <strong class="font-semibold text-slate-800" data-bind="adProvider">Google AdMob</strong>. These ads only play when you explicitly tap a reward prompt in the game to:
+              </p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-2">
+                <div class="p-4 rounded-xl bg-amber-50/70 border border-amber-200/80">
+                  <div class="font-display font-bold text-sm text-amber-950 mb-1">1. Revive Your Duck</div>
+                  <p class="text-xs sm:text-sm text-amber-900/80 leading-relaxed">
+                    Continue your current run immediately after crashing into an obstacle instead of restarting from the beginning.
+                  </p>
+                </div>
+                <div class="p-4 rounded-xl bg-sky-50/70 border border-sky-200/80">
+                  <div class="font-display font-bold text-sm text-sky-950 mb-1">2. Skip Challenging Missions</div>
+                  <p class="text-xs sm:text-sm text-sky-900/80 leading-relaxed">
+                    Bypass a tough mission objective and advance smoothly to the next challenge when you choose to watch a video.
+                  </p>
+                </div>
+              </div>
+
+              <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 pt-2">Data Processed by Advertising Partners</h3>
+              <p>
+                When you request or watch a rewarded advertisement, <strong class="font-semibold text-slate-800" data-bind="adProvider">Google AdMob</strong> may automatically collect and process the following technical and advertising signals:
+              </p>
+
+              <ul class="space-y-2.5 text-sm sm:text-[15px] text-slate-600">
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+                  <span><strong class="font-semibold text-slate-800">Android Advertising ID (AAID):</strong> A user-resettable device identifier used to serve ads, cap ad frequency, and measure ad performance.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+                  <span><strong class="font-semibold text-slate-800">IP Address:</strong> Used to infer coarse geographic location (such as country or city) for regional compliance and to detect and block invalid traffic or ad fraud.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+                  <span><strong class="font-semibold text-slate-800">Device &amp; App Diagnostics:</strong> Device manufacturer/model, Android OS version, screen dimensions, language settings, and basic ad interaction timestamps.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+                  <span><strong class="font-semibold text-slate-800">Ad-Completion Verification Signals:</strong> Technical callback signals confirming that you finished watching the rewarded video so Duck Rush can securely grant your in-game revive or mission skip.</span>
+                </li>
+              </ul>
+
+              <!-- Opt-Out & AAID Reset Instructions Callout -->
+              <div class="bg-[#FFFDF7] border border-slate-200 rounded-xl p-4 sm:p-5 mt-3">
+                <h4 class="font-display font-bold text-sm sm:text-base text-slate-900 mb-1.5">How to Opt Out of Personalized Ads or Reset Your Advertising ID</h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  You have full control over advertising identifiers on your Android device. At any time, open your device’s <strong class="font-semibold text-slate-800">Settings &rarr; Google &rarr; All services (or Privacy) &rarr; Ads</strong>, where you can tap <strong class="font-semibold text-slate-800">Reset advertising ID</strong>, <strong class="font-semibold text-slate-800">Delete advertising ID</strong>, or opt out of Ads Personalization. If you delete or reset your AAID, you can still watch rewarded ads for revives and mission skips using non-personalized contextual ads.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- SECTION 4: GAMEPLAY DATA & CRASH DIAGNOSTICS                  -->
+          <!-- ============================================================= -->
+          <section id="gameplay-diagnostics" class="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 shadow-[0_2px_12px_-3px_rgba(15,23,42,0.04)]">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-800 font-display font-bold text-sm flex items-center justify-center shrink-0">04</span>
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Gameplay Data &amp; Crash Diagnostics</h2>
+            </div>
+
+            <div class="space-y-4 text-[15px] sm:text-base text-slate-600 leading-relaxed">
+              <p>
+                <strong class="font-semibold text-slate-800">Local Device Storage:</strong> Duck Rush stores your active mission progress, unlocked ducks, high scores, and audio/control preferences locally on your device’s internal app storage so you can resume playing instantaneously—even without an internet connection.
+              </p>
+              <p>
+                <strong class="font-semibold text-slate-800">Anonymous Crash &amp; Performance Metrics:</strong> To diagnose bugs, prevent freezes, and optimize frame rates across different Android phones and tablets, Duck Rush receives aggregated, anonymous crash logs, Application Not Responding (ANR) traces, and performance metrics through <strong class="font-semibold text-slate-800">Google Play / Android Vitals</strong>. These diagnostics do not identify you personally.
+              </p>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- SECTION 5: GOOGLE PLAY DATA SAFETY OVERVIEW TABLE             -->
+          <!-- ============================================================= -->
+          <section id="data-safety" class="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 shadow-[0_2px_12px_-3px_rgba(15,23,42,0.04)]">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-display font-bold text-sm flex items-center justify-center shrink-0">05</span>
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Google Play Data Safety Overview</h2>
+            </div>
+
+            <p class="text-[15px] sm:text-base text-slate-600 leading-relaxed mb-5">
+              For transparency and alignment with the Google Play Store Data Safety section, the table below summarizes the categories of data processed by Duck Rush:
+            </p>
+
+            <div class="overflow-x-auto rounded-xl border border-[#E2E8F0]">
+              <table class="w-full text-left border-collapse min-w-[640px]">
+                <thead>
+                  <tr class="bg-slate-50 border-b border-[#E2E8F0] text-xs font-display font-bold uppercase tracking-wider text-slate-700">
+                    <th class="py-3.5 px-4">Data Category</th>
+                    <th class="py-3.5 px-4">Specific Data Points</th>
+                    <th class="py-3.5 px-4">Purpose</th>
+                    <th class="py-3.5 px-4">Shared With Third Parties</th>
+                    <th class="py-3.5 px-4">User Control</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200/80 text-sm text-slate-600">
+                  <tr class="hover:bg-[#FFFDF7] transition-colors">
+                    <td class="py-3.5 px-4 font-semibold text-slate-900 align-top">
+                      Personal Info<br />
+                      <span class="text-xs font-normal text-slate-500">(Play Games Profile)</span>
+                    </td>
+                    <td class="py-3.5 px-4 align-top">Gamer Tag (Display Name), Avatar, Play Games Player ID</td>
+                    <td class="py-3.5 px-4 align-top">App Functionality (Profile display, leaderboards &amp; cloud sync)</td>
+                    <td class="py-3.5 px-4 align-top">Google Play Games Services</td>
+                    <td class="py-3.5 px-4 align-top">
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200">Optional (Opt-In)</span>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-[#FFFDF7] transition-colors">
+                    <td class="py-3.5 px-4 font-semibold text-slate-900 align-top">
+                      App Activity
+                    </td>
+                    <td class="py-3.5 px-4 align-top">Cloud save progress, achievements, leaderboard scores, rewarded ad completion signals</td>
+                    <td class="py-3.5 px-4 align-top">App Functionality &amp; In-Game Reward Verification (Revives / Skips)</td>
+                    <td class="py-3.5 px-4 align-top">Google Play Games Services, <span data-bind="adProvider">Google AdMob</span></td>
+                    <td class="py-3.5 px-4 align-top">
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-sky-50 text-sky-700 border border-sky-200">Optional / Voluntary</span>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-[#FFFDF7] transition-colors">
+                    <td class="py-3.5 px-4 font-semibold text-slate-900 align-top">
+                      Device or Other IDs
+                    </td>
+                    <td class="py-3.5 px-4 align-top">Android Advertising ID (AAID), coarse IP address</td>
+                    <td class="py-3.5 px-4 align-top">Advertising, Frequency Capping &amp; Invalid-Traffic Prevention</td>
+                    <td class="py-3.5 px-4 align-top"><span data-bind="adProvider">Google AdMob</span></td>
+                    <td class="py-3.5 px-4 align-top">
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200">Opt-In Ads; Resettable AAID</span>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-[#FFFDF7] transition-colors">
+                    <td class="py-3.5 px-4 font-semibold text-slate-900 align-top">
+                      App Info &amp; Performance
+                    </td>
+                    <td class="py-3.5 px-4 align-top">Crash logs, ANR traces, device model &amp; OS version</td>
+                    <td class="py-3.5 px-4 align-top">Analytics &amp; App Stability</td>
+                    <td class="py-3.5 px-4 align-top">Google Play / Android Vitals</td>
+                    <td class="py-3.5 px-4 align-top">
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">Anonymous Diagnostics</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- SECTION 6: DATA RETENTION, SECURITY & ACCOUNT DELETION        -->
+          <!-- ============================================================= -->
+          <section id="retention-deletion" class="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 shadow-[0_2px_12px_-3px_rgba(15,23,42,0.04)]">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-800 font-display font-bold text-sm flex items-center justify-center shrink-0">06</span>
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Data Retention, Security &amp; Account Deletion</h2>
+            </div>
+
+            <div class="space-y-4 text-[15px] sm:text-base text-slate-600 leading-relaxed">
+              <p>
+                <strong class="font-semibold text-slate-800">Encryption in Transit:</strong> All network communications between Duck Rush, Google Play Games Services, and <span data-bind="adProvider" class="font-medium text-slate-800">Google AdMob</span> are encrypted in transit using industry-standard <strong class="font-semibold text-slate-800">TLS / HTTPS</strong> protocols.
+              </p>
+
+              <p>
+                <strong class="font-semibold text-slate-800">Data Retention:</strong> Local game saves remain stored on your Android device until you clear the app’s storage or uninstall Duck Rush. Cloud saves and leaderboard entries tied to your Google Play Games account remain stored in Google Play Games Services until you delete them or disconnect the game.
+              </p>
+
+              <div class="bg-[#FFFDF7] border border-slate-200 rounded-xl p-5 space-y-3">
+                <h3 class="font-display font-bold text-base text-slate-900">How to Disconnect Google Play Games &amp; Delete Your Data</h3>
+                <p class="text-sm text-slate-600">
+                  In compliance with Google Play Data Deletion requirements, GDPR, and CCPA/CPRA, you can delete your Duck Rush data at any time using the steps below:
+                </p>
+
+                <ol class="space-y-2.5 text-sm text-slate-700 list-decimal list-inside">
+                  <li>
+                    <strong class="font-semibold text-slate-900">Clear Local Device Data:</strong> Open your Android device’s <span class="font-medium">Settings &rarr; Apps &rarr; Duck Rush &rarr; Storage &rarr; Clear Storage / Clear Data</span>, or uninstall the app.
+                  </li>
+                  <li>
+                    <strong class="font-semibold text-slate-900">Delete Google Play Games Cloud Data &amp; Revoke Access:</strong> Open the <span class="font-medium">Google Play Games</span> app on your device, tap <span class="font-medium">More (&vellip;) &rarr; Settings &rarr; Delete Play Games account &amp; data</span>, locate <span class="font-medium">Duck Rush</span>, and tap <span class="font-medium">Delete</span>. You may also revoke access anytime via <span class="font-medium">Google Account &rarr; Security &rarr; Third-party apps &amp; services</span>.
+                  </li>
+                  <li>
+                    <strong class="font-semibold text-slate-900">Request Direct Deletion Assistance:</strong> Email us at{" "}
+                    <a href="mailto:privacy@duckrushgame.com" data-bind-email="true" class="font-semibold text-sky-600 hover:text-sky-700 underline decoration-sky-300 underline-offset-2">
+                      privacy@duckrushgame.com
+                    </a>{" "}
+                    with the subject line <span class="font-medium">“Duck Rush Data Deletion Request”</span> (including your Play Games Gamer Tag if applicable). We will confirm deletion or fulfillment of your privacy rights within 30 days.
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- SECTION 7: CHILDREN'S PRIVACY                                 -->
+          <!-- ============================================================= -->
+          <section id="childrens-privacy" class="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 shadow-[0_2px_12px_-3px_rgba(15,23,42,0.04)]">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-8 h-8 rounded-xl bg-amber-100 text-amber-800 font-display font-bold text-sm flex items-center justify-center shrink-0">07</span>
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Children’s Privacy</h2>
+            </div>
+
+            <div class="space-y-4 text-[15px] sm:text-base text-slate-600 leading-relaxed">
+              <p>
+                <strong class="font-semibold text-slate-800" data-bind="studioName">Duck Rush Studio</strong> is committed to protecting the privacy of young players in accordance with applicable laws, including the Children’s Online Privacy Protection Act (COPPA) and GDPR-K.
+              </p>
+              <p>
+                We do not knowingly collect personal contact information directly from children under the age of 13 (or the applicable age of digital consent in your country) without verifiable parental consent. Where required by regional regulations or age-gate settings, advertising requests are restricted to non-personalized, contextual ads.
+              </p>
+              <p>
+                If you are a parent or legal guardian and believe your child has shared personal information through third-party platform services while playing Duck Rush, please contact us at{" "}
+                <a href="mailto:privacy@duckrushgame.com" data-bind-email="true" class="font-semibold text-sky-600 hover:text-sky-700 underline decoration-sky-300 underline-offset-2">
+                  privacy@duckrushgame.com
+                </a>{" "}
+                so we can promptly assist with review and deletion.
+              </p>
+            </div>
+          </section>
+
+          <!-- ============================================================= -->
+          <!-- SECTION 8: CHANGES TO THIS POLICY & CONTACT INFORMATION       -->
+          <!-- ============================================================= -->
+          <section id="contact" class="bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 shadow-[0_2px_12px_-3px_rgba(15,23,42,0.04)]">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-8 h-8 rounded-xl bg-sky-100 text-sky-800 font-display font-bold text-sm flex items-center justify-center shrink-0">08</span>
+              <h2 class="font-display font-bold text-xl sm:text-2xl text-slate-900">Changes to This Policy &amp; Contact Information</h2>
+            </div>
+
+            <div class="space-y-5 text-[15px] sm:text-base text-slate-600 leading-relaxed">
+              <p>
+                We may update this Privacy Policy from time to time to reflect new game features, platform updates, or legal requirements. When we make changes, we will update the <strong class="font-semibold text-slate-800">Effective Date</strong> at the top of this page and, for material updates, provide an in-app or Google Play Store listing notice.
+              </p>
+
+              <!-- Contact Details Card -->
+              <div class="rounded-2xl bg-gradient-to-br from-[#FFFDF7] to-sky-50/40 border border-slate-200 p-5 sm:p-6">
+                <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 mb-3">Developer &amp; Privacy Contact</h3>
+                <dl class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                  <div>
+                    <dt class="text-xs font-semibold uppercase tracking-wider text-slate-400">Developer / Studio</dt>
+                    <dd class="mt-1 font-semibold text-slate-900" data-bind="studioName">Duck Rush Studio</dd>
+                  </div>
+
+                  <div>
+                    <dt class="text-xs font-semibold uppercase tracking-wider text-slate-400">Support &amp; Privacy Email</dt>
+                    <dd class="mt-1">
+                      <a href="mailto:privacy@duckrushgame.com" data-bind-email="true" class="font-semibold text-sky-600 hover:text-sky-700 underline decoration-sky-300 underline-offset-2">
+                        privacy@duckrushgame.com
+                      </a>
+                    </dd>
+                  </div>
+
+                  <div>
+                    <dt class="text-xs font-semibold uppercase tracking-wider text-slate-400">Game Title &amp; Platform</dt>
+                    <dd class="mt-1 font-medium text-slate-800">Duck Rush (Android / Google Play)</dd>
+                  </div>
+
+                  <div>
+                    <dt class="text-xs font-semibold uppercase tracking-wider text-slate-400">Country / Jurisdiction</dt>
+                    <dd class="mt-1 font-medium text-slate-800" data-bind="jurisdiction">United States</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </section>
+
+        </article>
+      </div>
+    </main>
+
+    <!-- Public Footer -->
+    <footer class="border-t border-[#E2E8F0] bg-white mt-12">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-500">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+          <span>&copy; <span id="footer-year">2026</span> <strong class="font-semibold text-slate-700" data-bind="studioName">Duck Rush Studio</strong>. All rights reserved.</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-4">
+          <a href="#overview" class="hover:text-slate-900 transition">Back to Top &uarr;</a>
+          <span class="text-slate-300">&bull;</span>
+          <a href="mailto:privacy@duckrushgame.com" data-bind-email="true" class="hover:text-sky-600 transition">privacy@duckrushgame.com</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Toast Notification Container (Replaces alert() cleanly) -->
+  <div id="toast-container" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex flex-col items-center gap-2"></div>
+
+  <!-- ===================================================================== -->
+  <!-- INTERACTIVE SCRIPTS: SCROLL-SPY, LIVE EDITOR, COPY & CLEAN EXPORT     -->
+  <!-- ===================================================================== -->
+  <script>
+    (function () {
+      // 1. Toast Helper (No alert() or confirm() used anywhere)
+      function showToast(message, accent) {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        const dotColor = accent === 'sky' ? 'bg-sky-400' : 'bg-amber-400';
+        toast.className = 'pointer-events-auto flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-slate-900 text-white text-xs sm:text-sm font-medium shadow-xl border border-slate-700 transition-all duration-300 opacity-0 translate-y-2';
+        toast.innerHTML = '<span class="w-2 h-2 rounded-full ' + dotColor + ' shrink-0"></span><span>' + message + '</span>';
+
+        container.appendChild(toast);
+        requestAnimationFrame(function () {
+          toast.classList.remove('opacity-0', 'translate-y-2');
+        });
+
+        setTimeout(function () {
+          toast.classList.add('opacity-0', 'translate-y-2');
+          setTimeout(function () {
+            if (toast.parentNode) toast.parentNode.removeChild(toast);
+          }, 300);
+        }, 2800);
+      }
+
+      // 2. Scroll-Spy Highlighting for Desktop & Mobile Table of Contents
+      const sections = Array.from(document.querySelectorAll('article section[id]'));
+      const tocLinks = Array.from(document.querySelectorAll('.toc-link'));
+
+      function setActiveToc(sectionId) {
+        tocLinks.forEach(function (link) {
+          const isMatch = link.getAttribute('data-toc-link') === sectionId;
+          const numBadge = link.querySelector('.toc-num');
+
+          if (isMatch) {
+            link.classList.add('bg-sky-50', 'text-sky-900', 'font-semibold', 'border-sky-500');
+            link.classList.remove('text-slate-600', 'border-transparent');
+            if (numBadge) {
+              numBadge.classList.add('bg-sky-500', 'text-white');
+              numBadge.classList.remove('bg-slate-100', 'text-slate-600');
+            }
+            // Keep active pill visible in mobile horizontal bar
+            if (link.closest('#mobile-toc-bar')) {
+              link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+          } else {
+            link.classList.remove('bg-sky-50', 'text-sky-900', 'font-semibold', 'border-sky-500');
+            link.classList.add('text-slate-600', 'border-transparent');
+            if (numBadge) {
+              numBadge.classList.remove('bg-sky-500', 'text-white');
+              numBadge.classList.add('bg-slate-100', 'text-slate-600');
+            }
+          }
+        });
+      }
+
+      function updateActiveSectionOnScroll() {
+        const scrollPosition = window.scrollY + 150;
+        let currentId = sections.length ? sections[0].id : 'overview';
+
+        for (let i = 0; i < sections.length; i++) {
+          const sec = sections[i];
+          if (sec.offsetTop <= scrollPosition) {
+            currentId = sec.id;
+          }
+        }
+
+        // If scrolled to the very bottom, activate the final section
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24 && sections.length) {
+          currentId = sections[sections.length - 1].id;
+        }
+
+        setActiveToc(currentId);
+      }
+
+      window.addEventListener('scroll', updateActiveSectionOnScroll, { passive: true });
+      window.addEventListener('load', updateActiveSectionOnScroll);
+      updateActiveSectionOnScroll();
+
+      // 3. Developer Live-Edit State & Real-Time DOM Binding
+      const inputs = {
+        studioName: document.getElementById('input-studio'),
+        email: document.getElementById('input-email'),
+        adProvider: document.getElementById('input-ad-provider'),
+        effectiveDate: document.getElementById('input-effective-date'),
+        jurisdiction: document.getElementById('input-jurisdiction')
+      };
+
+      const defaults = {
+        studioName: 'Duck Rush Studio',
+        email: 'privacy@duckrushgame.com',
+        adProvider: 'Google AdMob',
+        effectiveDate: 'November 12, 2026',
+        jurisdiction: 'United States'
+      };
+
+      function syncPolicyBindings() {
+        const values = {
+          studioName: (inputs.studioName && inputs.studioName.value.trim()) || defaults.studioName,
+          email: (inputs.email && inputs.email.value.trim()) || defaults.email,
+          adProvider: (inputs.adProvider && inputs.adProvider.value.trim()) || defaults.adProvider,
+          effectiveDate: (inputs.effectiveDate && inputs.effectiveDate.value.trim()) || defaults.effectiveDate,
+          jurisdiction: (inputs.jurisdiction && inputs.jurisdiction.value.trim()) || defaults.jurisdiction
+        };
+
+        document.querySelectorAll('[data-bind]').forEach(function (el) {
+          const key = el.getAttribute('data-bind');
+          if (values[key]) {
+            el.textContent = values[key];
+          }
+        });
+
+        document.querySelectorAll('[data-bind-email="true"]').forEach(function (anchor) {
+          anchor.textContent = values.email;
+          anchor.setAttribute('href', 'mailto:' + values.email);
+        });
+
+        // Update footer copyright year if a 4-digit year exists in effectiveDate
+        const yearMatch = values.effectiveDate.match(/\b(20\d{2})\b/);
+        const footerYearEl = document.getElementById('footer-year');
+        if (footerYearEl && yearMatch) {
+          footerYearEl.textContent = yearMatch[1];
+        }
+      }
+
+      Object.keys(inputs).forEach(function (key) {
+        if (inputs[key]) {
+          inputs[key].addEventListener('input', syncPolicyBindings);
+        }
+      });
+
+      // 4. Developer Toolbar Collapse & Hide/Restore Controls
+      const devToolbar = document.getElementById('dev-toolbar');
+      const devPanelBody = document.getElementById('dev-panel-body');
+      const btnTogglePanel = document.getElementById('btn-toggle-dev-panel');
+      const toggleLabel = document.getElementById('toggle-panel-label');
+      const toggleChevron = document.getElementById('toggle-panel-chevron');
+      const btnHideDevBar = document.getElementById('btn-hide-dev-bar');
+      const devRestorePill = document.getElementById('dev-restore-pill');
+
+      let isPanelExpanded = true;
+
+      if (btnTogglePanel) {
+        btnTogglePanel.addEventListener('click', function () {
+          isPanelExpanded = !isPanelExpanded;
+          devPanelBody.classList.toggle('hidden', !isPanelExpanded);
+          toggleLabel.textContent = isPanelExpanded ? 'Collapse' : 'Customize';
+          toggleChevron.style.transform = isPanelExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+          btnTogglePanel.setAttribute('aria-expanded', String(isPanelExpanded));
+        });
+      }
+
+      if (btnHideDevBar && devRestorePill) {
+        btnHideDevBar.addEventListener('click', function () {
+          devToolbar.classList.add('hidden');
+          devRestorePill.classList.remove('hidden');
+          devRestorePill.classList.add('inline-flex');
+          showToast('Switched to pure public view', 'sky');
+        });
+
+        devRestorePill.addEventListener('click', function () {
+          devToolbar.classList.remove('hidden');
+          devRestorePill.classList.add('hidden');
+          devRestorePill.classList.remove('inline-flex');
+        });
+      }
+
+      // 5. Copy Policy Plain Text to Clipboard (Uses document.execCommand('copy') for iFrame reliability)
+      const btnCopyPolicy = document.getElementById('btn-copy-policy');
+      if (btnCopyPolicy) {
+        btnCopyPolicy.addEventListener('click', function () {
+          const article = document.getElementById('policy-document-body');
+          if (!article) return;
+
+          // Extract clean readable plain text normalized across sections
+          const rawText = article.innerText
+            .replace(/\n{3,}/g, '\n\n')
+            .trim();
+
+          const textarea = document.createElement('textarea');
+          textarea.value = rawText;
+          textarea.setAttribute('readonly', '');
+          textarea.style.position = 'fixed';
+          textarea.style.left = '-9999px';
+          textarea.style.top = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          textarea.setSelectionRange(0, textarea.value.length);
+
+          let copied = false;
+          try {
+            copied = document.execCommand('copy');
+          } catch (err) {
+            copied = false;
+          }
+          document.body.removeChild(textarea);
+
+          if (copied) {
+            showToast('Privacy Policy text copied to clipboard!', 'sky');
+          } else {
+            showToast('Unable to copy automatically — please select text manually.', 'amber');
+          }
+        });
+      }
+
+      // 6. Download Clean Standalone index.html (Strips Developer Toolbar completely)
+      const btnDownloadHtml = document.getElementById('btn-download-html');
+      if (btnDownloadHtml) {
+        btnDownloadHtml.addEventListener('click', function () {
+          syncPolicyBindings();
+
+          const publicRoot = document.getElementById('public-policy-root');
+          if (!publicRoot) return;
+
+          // Clone public root and strip editor-only data attributes for pristine output
+          const clonedRoot = publicRoot.cloneNode(true);
+          clonedRoot.querySelectorAll('[data-bind], [data-bind-email]').forEach(function (el) {
+            el.removeAttribute('data-bind');
+            el.removeAttribute('data-bind-email');
+          });
+
+          const studioText = (inputs.studioName && inputs.studioName.value.trim()) || defaults.studioName;
+
+          const cleanScrollSpyScript = [
+            '<script>',
+            '  (function () {',
+            '    var sections = Array.prototype.slice.call(document.querySelectorAll("article section[id]"));',
+            '    var tocLinks = Array.prototype.slice.call(document.querySelectorAll(".toc-link"));',
+            '    function setActiveToc(sectionId) {',
+            '      tocLinks.forEach(function (link) {',
+            '        var isMatch = link.getAttribute("data-toc-link") === sectionId;',
+            '        var numBadge = link.querySelector(".toc-num");',
+            '        if (isMatch) {',
+            '          link.classList.add("bg-sky-50", "text-sky-900", "font-semibold", "border-sky-500");',
+            '          link.classList.remove("text-slate-600", "border-transparent");',
+            '          if (numBadge) {',
+            '            numBadge.classList.add("bg-sky-500", "text-white");',
+            '            numBadge.classList.remove("bg-slate-100", "text-slate-600");',
+            '          }',
+            '        } else {',
+            '          link.classList.remove("bg-sky-50", "text-sky-900", "font-semibold", "border-sky-500");',
+            '          link.classList.add("text-slate-600", "border-transparent");',
+            '          if (numBadge) {',
+            '            numBadge.classList.remove("bg-sky-500", "text-white");',
+            '            numBadge.classList.add("bg-slate-100", "text-slate-600");',
+            '          }',
+            '        }',
+            '      });',
+            '    }',
+            '    function updateActive() {',
+            '      var pos = window.scrollY + 150;',
+            '      var currentId = sections.length ? sections[0].id : "overview";',
+            '      for (var i = 0; i < sections.length; i++) {',
+            '        if (sections[i].offsetTop <= pos) currentId = sections[i].id;',
+            '      }',
+            '      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 24 && sections.length) {',
+            '        currentId = sections[sections.length - 1].id;',
+            '      }',
+            '      setActiveToc(currentId);',
+            '    }',
+            '    window.addEventListener("scroll", updateActive, { passive: true });',
+            '    window.addEventListener("load", updateActive);',
+            '    updateActive();',
+            '  })();',
+            '<' + '/script>'
+          ].join('\n');
+
+          const standaloneHtml = [
+            '<!DOCTYPE html>',
+            '<html lang="en" class="scroll-smooth">',
+            '<head>',
+            '  <meta charset="UTF-8" />',
+            '  <meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+            '  <title>Privacy Policy — Duck Rush (' + studioText.replace(/</g, '&lt;').replace(/>/g, '&gt;') + ')</title>',
+            '  <meta name="description" content="Official Privacy Policy for the Duck Rush mobile game, covering optional Google Play Games sign-in, voluntary rewarded ads for revives and mission skips, and player data rights." />',
+            '  <link rel="preconnect" href="https://fonts.googleapis.com" />',
+            '  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />',
+            '  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />',
+            '  <script src="https://cdn.tailwindcss.com"><' + '/script>',
+            '  <style>',
+            '    body { background-color: #FFFDF7; color: #1E293B; font-family: "Inter", system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }',
+            '    h1, h2, h3, h4, .font-display { font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif; }',
+            '    section[id] { scroll-margin-top: 6.5rem; }',
+            '    .no-scrollbar::-webkit-scrollbar { display: none; }',
+            '    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }',
+            '  </style>',
+            '</head>',
+            '<body class="min-h-screen flex flex-col selection:bg-amber-200 selection:text-slate-900">',
+            clonedRoot.outerHTML,
+            cleanScrollSpyScript,
+            '</body>',
+            '</html>'
+          ].join('\n');
+
+          const blob = new Blob([standaloneHtml], { type: 'text/html;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+          link.href = url;
+          link.download = 'index.html';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          setTimeout(function () {
+            URL.revokeObjectURL(url);
+          }, 1000);
+
+          showToast('Clean standalone index.html downloaded!', 'amber');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
